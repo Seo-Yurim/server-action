@@ -5,10 +5,11 @@ import { NextResponse } from 'next/server';
 
 // 서버에서 게시글 생성
 export async function createPost(formData: FormData) {
-  const title = formData.get('title') as string;
+  const name = formData.get('name') as string;
+  const content = formData.get('content') as string;
 
   await prisma.post.create({
-    data: { title }
+    data: { name, content }
   });
 
   return { message: 'Post created successfully' };
